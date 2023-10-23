@@ -57,8 +57,7 @@
 		BBF325752AE6310B00E38E30 = {
 			isa = PBXGroup;
 			children = (
-				BBF3259B2AE6342D00E38E30 /* FeedLoader.swift */,
-				BBF325992AE6339E00E38E30 /* FeedItem.swift */,
+				BBF3259D2AE634D100E38E30 /* Feed Feature */,
 				BBF325812AE6310B00E38E30 /* SKEssentialFeed */,
 				BBF3258D2AE6310B00E38E30 /* SKEssentialFeedTests */,
 				BBF325802AE6310B00E38E30 /* Products */,
@@ -89,6 +88,15 @@
 				BBF3258E2AE6310B00E38E30 /* SKEssentialFeedTests.swift */,
 			);
 			path = SKEssentialFeedTests;
+			sourceTree = "<group>";
+		};
+		BBF3259D2AE634D100E38E30 /* Feed Feature */ = {
+			isa = PBXGroup;
+			children = (
+				BBF3259B2AE6342D00E38E30 /* FeedLoader.swift */,
+				BBF325992AE6339E00E38E30 /* FeedItem.swift */,
+			);
+			path = "Feed Feature";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
