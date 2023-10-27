@@ -22,3 +22,5 @@ so I can enjoy latest Feed.(Value)
  Then the app should display the latest feed from remote
   And replace the cache with the new feed
 ```
+
+![Fig: RemoteFeedLoader](https://github.com/tarunsubash/SKEssentialFeed/assets/9212548/f6e5ee90-ff08-401b-a94a-1126ffb7eb2b)
