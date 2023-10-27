@@ -24,3 +24,21 @@ so I can enjoy latest Feed.(Value)
 ```
 
 ![Fig: RemoteFeedLoader](https://github.com/tarunsubash/SKEssentialFeed/assets/9212548/f6e5ee90-ff08-401b-a94a-1126ffb7eb2b)
+
+# Use Case
+### Load Feed Data From Remote
+
+### Data
+- Feed URL
+
+### Happy Path:
+1. Fetch Image Feed using above Data
+2. App Downloads Data from URL
+3. Validate the fetched Data
+4. Present the valid Feed Data
+
+### Sad Path - Invalid Data
++ Deliver Invalid Data Error
+  
+### Sad Path - No Connectivity
++ Deliver NoConnectivity Error
