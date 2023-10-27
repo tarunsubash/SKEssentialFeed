@@ -9,10 +9,10 @@
 /* Begin PBXBuildFile section */
 		BBF325842AE6310B00E38E30 /* SKEssentialFeed.docc in Sources */ = {isa = PBXBuildFile; fileRef = BBF325832AE6310B00E38E30 /* SKEssentialFeed.docc */; };
 		BBF3258A2AE6310B00E38E30 /* SKEssentialFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBF3257F2AE6310B00E38E30 /* SKEssentialFeed.framework */; };
-		BBF3258F2AE6310B00E38E30 /* SKEssentialFeedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF3258E2AE6310B00E38E30 /* SKEssentialFeedTests.swift */; };
 		BBF325902AE6310B00E38E30 /* SKEssentialFeed.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF325822AE6310B00E38E30 /* SKEssentialFeed.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BBF3259A2AE6339E00E38E30 /* FeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF325992AE6339E00E38E30 /* FeedItem.swift */; };
 		BBF3259C2AE6342D00E38E30 /* FeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF3259B2AE6342D00E38E30 /* FeedLoader.swift */; };
+		BBF3259F2AEC1C2200E38E30 /* RemoteFeedLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF3259E2AEC1C2200E38E30 /* RemoteFeedLoaderTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,9 +30,9 @@
 		BBF325822AE6310B00E38E30 /* SKEssentialFeed.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKEssentialFeed.h; sourceTree = "<group>"; };
 		BBF325832AE6310B00E38E30 /* SKEssentialFeed.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = SKEssentialFeed.docc; sourceTree = "<group>"; };
 		BBF325892AE6310B00E38E30 /* SKEssentialFeedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SKEssentialFeedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		BBF3258E2AE6310B00E38E30 /* SKEssentialFeedTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKEssentialFeedTests.swift; sourceTree = "<group>"; };
 		BBF325992AE6339E00E38E30 /* FeedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItem.swift; sourceTree = "<group>"; };
 		BBF3259B2AE6342D00E38E30 /* FeedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedLoader.swift; sourceTree = "<group>"; };
+		BBF3259E2AEC1C2200E38E30 /* RemoteFeedLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFeedLoaderTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,7 +85,7 @@
 		BBF3258D2AE6310B00E38E30 /* SKEssentialFeedTests */ = {
 			isa = PBXGroup;
 			children = (
-				BBF3258E2AE6310B00E38E30 /* SKEssentialFeedTests.swift */,
+				BBF3259E2AEC1C2200E38E30 /* RemoteFeedLoaderTests.swift */,
 			);
 			path = SKEssentialFeedTests;
 			sourceTree = "<group>";
@@ -164,6 +164,7 @@
 					};
 					BBF325882AE6310B00E38E30 = {
 						CreatedOnToolsVersion = 15.0.1;
+						LastSwiftMigration = 1500;
 					};
 				};
 			};
@@ -218,7 +219,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BBF3258F2AE6310B00E38E30 /* SKEssentialFeedTests.swift in Sources */,
+				BBF3259F2AEC1C2200E38E30 /* RemoteFeedLoaderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,6 +361,7 @@
 		BBF325942AE6310B00E38E30 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -391,6 +393,7 @@
 		BBF325952AE6310B00E38E30 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -423,6 +426,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6Y7B4Z29JH;
@@ -431,6 +436,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.sk.ios.SKEssentialFeedTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -439,6 +445,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6Y7B4Z29JH;
