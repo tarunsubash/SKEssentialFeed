@@ -25,34 +25,39 @@ protocol HTTPClient {
     func get(from url: URL)
 }
 
-class FakeHTTPClient: HTTPClient {
-    var requestedURL: URL?
-    
-    func get(from url: URL) {
-        requestedURL = url
-    }
-}
+
 
 final class RemoteFeedLoaderTests: XCTestCase {
     
     func testRemoteFeedLoader_WhenInitialized_DoesnotMakeAReuqest() {
-        let client = FakeHTTPClient()
-
-        _ = RemoteFeedLoader(url: URL(string: "https://test-url.com")!,
-                             client: client)
+        let (_, client) = makeSUT()
                 
         XCTAssertNil(client.requestedURL)
     }
 
     
     func test_Load_RequestDataFromURL() {
-        let client = FakeHTTPClient()
         let expectedURL = URL(string: "https://test-url.com")!
-        let sut = RemoteFeedLoader(url: expectedURL,
-                                   client: client)
+        
+        let (sut, client) = makeSUT(url: expectedURL)
         
         sut.load()
         
         XCTAssertEqual(client.requestedURL, expectedURL)
+    }
+    
+    private func makeSUT(url: URL = URL(string: "https://test-url.com")!) -> (sut: RemoteFeedLoader, client: FakeHTTPClient) {
+        let client = FakeHTTPClient()
+        let sut = RemoteFeedLoader(url: url,
+                                   client: client)
+        return (sut, client)
+    }
+    
+    private class FakeHTTPClient: HTTPClient {
+        var requestedURL: URL?
+        
+        func get(from url: URL) {
+            requestedURL = url
+        }
     }
 }
