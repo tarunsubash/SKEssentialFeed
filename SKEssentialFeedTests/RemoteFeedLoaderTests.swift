@@ -22,7 +22,7 @@ final class RemoteFeedLoaderTests: XCTestCase {
         
         let (sut, client) = makeSUT(url: expectedURL)
         
-        sut.load()
+        sut.load { _ in }
         
         XCTAssertEqual(client.requestedURLs, [expectedURL])
     }
@@ -32,8 +32,8 @@ final class RemoteFeedLoaderTests: XCTestCase {
         
         let (sut, client) = makeSUT(url: expectedURL)
         
-        sut.load()
-        sut.load()
+        sut.load { _ in }
+        sut.load { _ in }
         
         XCTAssertEqual(client.requestedURLs, [expectedURL, expectedURL])
     }
@@ -48,11 +48,7 @@ final class RemoteFeedLoaderTests: XCTestCase {
         
         let clientError = NSError(domain: "Connectivity", code: 0)
         
-        /*
-         Pass the above created client error to the spy completion handler.
-         Am alternative approach to stubbing, where the control lies with the Developer and also each time a test is executed, the data is revoked.
-         */
-        client.completions[0](clientError)
+        client.complete(with: clientError)
         
         XCTAssertEqual(capturedErrors, [.connectivity])
         
@@ -74,13 +70,22 @@ final class RemoteFeedLoaderTests: XCTestCase {
      It gives a much better control over data.
      */
     private class HTTPClientSpy: HTTPClient {
-        var requestedURLs: [URL] = []
-        var error: Error?
-        var completions = [(Error) -> Void]()
+        private var messages = [(url: URL, completion: (Error) -> Void)]()
+
+        var requestedURLs: [URL] {
+            return messages.map { $0.url }
+        }
         
         func get(from url: URL, completion: @escaping (Error) -> Void) {
-            completions.append(completion)
-            requestedURLs.append(url)
+            messages.append((url, completion))
+        }
+        
+        // MARK: Helper Methods for SPY
+        /*
+         An alternative approach to stubbing, where the control lies with the Developer and also each time a test is executed, the data is revoked.
+         */
+        func complete(with error: Error, at index: Int = 0) {
+            messages[index].completion(error)
         }
     }
 }
