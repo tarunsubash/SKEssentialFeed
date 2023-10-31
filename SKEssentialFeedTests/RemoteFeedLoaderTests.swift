@@ -41,16 +41,11 @@ final class RemoteFeedLoaderTests: XCTestCase {
     func test_Load_DeliversConnectivityError_OnClientError() {
         let (sut, client) = makeSUT()
         
-        
-        var capturedErrors = [RemoteFeedLoader.Error]()
-        
-        sut.load { capturedErrors.append($0!) }
-        
-        let clientError = NSError(domain: "Connectivity", code: 0)
-        
-        client.complete(with: clientError)
-        
-        XCTAssertEqual(capturedErrors, [.connectivity])
+        expect(sut,
+               toCompleteWithError: .connectivity) {
+            let clientError = NSError(domain: "Connectivity", code: 0)
+            client.complete(with: clientError)
+        }
     }
     
     func test_Load_DeliversInvalidDataError_OnNon200HTTPResponses() {
@@ -58,17 +53,25 @@ final class RemoteFeedLoaderTests: XCTestCase {
         
         let samples = [199,201,300,400,500]
         samples.enumerated().forEach { index, code in
-            var capturedErrors = [RemoteFeedLoader.Error]()
-            
-            sut.load { capturedErrors.append($0!) }
-            
-            let clientError = NSError(domain: "Connectivity", code: 0)
-            
-            client.complete(withStatusCode: 400, at: index)
-            
-            XCTAssertEqual(capturedErrors, [.invalidData])
+          expect(sut,
+                 toCompleteWithError: .invalidData) {
+              let clientError = NSError(domain: "Connectivity", code: 0)
+              client.complete(withStatusCode: 400, at: index)
+          }
         }
     }
+    
+    func test_Load_DeliversInvalidDataError_On200HTTPResponsesWithInvalidJSON() {
+        let (sut, client) = makeSUT()
+        
+        expect(sut,
+               toCompleteWithError: .invalidData) {
+            let invalidJSONData = Data("Invalid Data".utf8)
+            client.complete(withStatusCode: 200, data: invalidJSONData)
+        }
+
+    }
+    
     
     
     // MARK: Test Helpers
@@ -80,6 +83,19 @@ final class RemoteFeedLoaderTests: XCTestCase {
         return (sut, client)
     }
     
+    private func expect(_ sut: RemoteFeedLoader,
+                         toCompleteWithError error: RemoteFeedLoader.Error,
+                         when action: () -> (),
+                        file: StaticString = #file,
+                        line: UInt = #line) {
+        var capturedErrors = [RemoteFeedLoader.Error]()
+        
+        sut.load { capturedErrors.append($0!) }
+        
+        action()
+        
+        XCTAssertEqual(capturedErrors, [error], file: file , line: line)
+    }
     /*
      A Spy is different from a Mock or a Fake Implementation
      A spy is generally used to capture values reather than stubbing (as in the case of mock classes)
@@ -104,12 +120,12 @@ final class RemoteFeedLoaderTests: XCTestCase {
             messages[index].completion(.failure(error))
         }
         
-        func complete(withStatusCode code: Int, at index: Int = 0) {
+        func complete(withStatusCode code: Int, data: Data = Data(), at index: Int = 0) {
             let httpResponse = HTTPURLResponse(url: requestedURLs[index],
                                                statusCode: code,
                                                httpVersion: nil,
                                                headerFields: nil)!
-            messages[index].completion(.success(httpResponse))
+            messages[index].completion(.success(httpResponse, data))
         }
     }
 }
