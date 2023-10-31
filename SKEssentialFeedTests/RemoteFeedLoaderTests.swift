@@ -44,14 +44,30 @@ final class RemoteFeedLoaderTests: XCTestCase {
         
         var capturedErrors = [RemoteFeedLoader.Error]()
         
-        sut.load { capturedErrors.append($0) }
+        sut.load { capturedErrors.append($0!) }
         
         let clientError = NSError(domain: "Connectivity", code: 0)
         
         client.complete(with: clientError)
         
         XCTAssertEqual(capturedErrors, [.connectivity])
+    }
+    
+    func test_Load_DeliversInvalidDataError_OnNon200HTTPResponses() {
+        let (sut, client) = makeSUT()
         
+        let samples = [199,201,300,400,500]
+        samples.enumerated().forEach { index, code in
+            var capturedErrors = [RemoteFeedLoader.Error]()
+            
+            sut.load { capturedErrors.append($0!) }
+            
+            let clientError = NSError(domain: "Connectivity", code: 0)
+            
+            client.complete(withStatusCode: 400, at: index)
+            
+            XCTAssertEqual(capturedErrors, [.invalidData])
+        }
     }
     
     
@@ -70,13 +86,13 @@ final class RemoteFeedLoaderTests: XCTestCase {
      It gives a much better control over data.
      */
     private class HTTPClientSpy: HTTPClient {
-        private var messages = [(url: URL, completion: (Error) -> Void)]()
+        private var messages = [(url: URL, completion: (Error?, HTTPURLResponse?) -> Void)]()
 
         var requestedURLs: [URL] {
             return messages.map { $0.url }
         }
         
-        func get(from url: URL, completion: @escaping (Error) -> Void) {
+        func get(from url: URL, completion: @escaping (Error?, HTTPURLResponse?) -> Void) {
             messages.append((url, completion))
         }
         
@@ -85,7 +101,15 @@ final class RemoteFeedLoaderTests: XCTestCase {
          An alternative approach to stubbing, where the control lies with the Developer and also each time a test is executed, the data is revoked.
          */
         func complete(with error: Error, at index: Int = 0) {
-            messages[index].completion(error)
+            messages[index].completion(error, nil)
+        }
+        
+        func complete(withStatusCode code: Int, at index: Int = 0) {
+            let httpResponse = HTTPURLResponse(url: requestedURLs[index],
+                                               statusCode: code,
+                                               httpVersion: nil,
+                                               headerFields: nil)
+            messages[index].completion(nil, httpResponse)
         }
     }
 }
