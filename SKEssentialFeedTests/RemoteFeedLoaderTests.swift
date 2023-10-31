@@ -40,14 +40,19 @@ final class RemoteFeedLoaderTests: XCTestCase {
     
     // MARK: Test Helpers
     
-    private func makeSUT(url: URL = URL(string: "https://test-url.com")!) -> (sut: RemoteFeedLoader, client: FakeHTTPClient) {
-        let client = FakeHTTPClient()
+    private func makeSUT(url: URL = URL(string: "https://test-url.com")!) -> (sut: RemoteFeedLoader, client: HTTPClientSpy) {
+        let client = HTTPClientSpy()
         let sut = RemoteFeedLoader(url: url,
                                    client: client)
         return (sut, client)
     }
     
-    private class FakeHTTPClient: HTTPClient {
+    /*
+     A Spy is different from a Mock or a Fake Implementation
+     A spy is generally used to capture values reather than stubbing (as in the case of mock classes)
+     It gives a much better control over data.
+     */
+    private class HTTPClientSpy: HTTPClient {
         var requestedURLs: [URL] = []
         
         func get(from url: URL) {
