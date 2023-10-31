@@ -13,7 +13,7 @@ final class RemoteFeedLoaderTests: XCTestCase {
     func testRemoteFeedLoader_WhenInitialized_DoesnotMakeAReuqest() {
         let (_, client) = makeSUT()
                 
-        XCTAssertNil(client.requestedURL)
+        XCTAssertTrue(client.requestedURLs.isEmpty)
     }
 
     
@@ -24,7 +24,18 @@ final class RemoteFeedLoaderTests: XCTestCase {
         
         sut.load()
         
-        XCTAssertEqual(client.requestedURL, expectedURL)
+        XCTAssertEqual(client.requestedURLs, [expectedURL])
+    }
+    
+    func test_LoadTwice_RequestDataFromURLTwice() {
+        let expectedURL = URL(string: "https://test-url.com")!
+        
+        let (sut, client) = makeSUT(url: expectedURL)
+        
+        sut.load()
+        sut.load()
+        
+        XCTAssertEqual(client.requestedURLs, [expectedURL, expectedURL])
     }
     
     // MARK: Test Helpers
@@ -37,10 +48,10 @@ final class RemoteFeedLoaderTests: XCTestCase {
     }
     
     private class FakeHTTPClient: HTTPClient {
-        var requestedURL: URL?
+        var requestedURLs: [URL] = []
         
         func get(from url: URL) {
-            requestedURL = url
+            requestedURLs.append(url)
         }
     }
 }
