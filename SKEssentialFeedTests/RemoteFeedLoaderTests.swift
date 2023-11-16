@@ -117,11 +117,7 @@ final class RemoteFeedLoaderTests: XCTestCase {
             "description": description,
             "location": location,
             "image": imageURL.absoluteString
-        ].reduce(into: [String: Any]()) { (acc, e) in
-            if let value = e.value {
-                acc[e.key] = value
-            }
-        }
+        ].compactMapValues { $0 }
         return (item, json)
     }
     
@@ -129,10 +125,11 @@ final class RemoteFeedLoaderTests: XCTestCase {
         let json = ["items": items]
         return try! JSONSerialization.data(withJSONObject: json)
     }
+    
     private func expect(_ sut: RemoteFeedLoader,
-                         toCompleteWithResult result: RemoteFeedLoader.Result,
-                         when action: () -> (),
-                        file: StaticString = #file,
+                        toCompleteWithResult result: RemoteFeedLoader.Result,
+                        when action: () -> (),
+                        file: StaticString = #filePath,
                         line: UInt = #line) {
         var capturedResults = [RemoteFeedLoader.Result]()
         
@@ -142,6 +139,7 @@ final class RemoteFeedLoaderTests: XCTestCase {
         
         XCTAssertEqual(capturedResults, [result], file: file , line: line)
     }
+    
     /*
      A Spy is different from a Mock or a Fake Implementation
      A spy is generally used to capture values reather than stubbing (as in the case of mock classes)
