@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BB3492C52B06F4B200FC7A71 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3492C42B06F4B200FC7A71 /* HTTPClient.swift */; };
+		BB3492C72B06F5C900FC7A71 /* FeedItemsMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3492C62B06F5C900FC7A71 /* FeedItemsMapper.swift */; };
 		BBE08E092AF124B800E79E8F /* RemoteFeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE08E082AF124B800E79E8F /* RemoteFeedLoader.swift */; };
 		BBF325842AE6310B00E38E30 /* SKEssentialFeed.docc in Sources */ = {isa = PBXBuildFile; fileRef = BBF325832AE6310B00E38E30 /* SKEssentialFeed.docc */; };
 		BBF3258A2AE6310B00E38E30 /* SKEssentialFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBF3257F2AE6310B00E38E30 /* SKEssentialFeed.framework */; };
@@ -29,6 +30,7 @@
 
 /* Begin PBXFileReference section */
 		BB3492C42B06F4B200FC7A71 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
+		BB3492C62B06F5C900FC7A71 /* FeedItemsMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItemsMapper.swift; sourceTree = "<group>"; };
 		BBE08E082AF124B800E79E8F /* RemoteFeedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFeedLoader.swift; sourceTree = "<group>"; };
 		BBF3257F2AE6310B00E38E30 /* SKEssentialFeed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SKEssentialFeed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBF325822AE6310B00E38E30 /* SKEssentialFeed.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKEssentialFeed.h; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 			children = (
 				BBE08E082AF124B800E79E8F /* RemoteFeedLoader.swift */,
 				BB3492C42B06F4B200FC7A71 /* HTTPClient.swift */,
+				BB3492C62B06F5C900FC7A71 /* FeedItemsMapper.swift */,
 			);
 			path = "Feed API";
 			sourceTree = "<group>";
@@ -226,6 +229,7 @@
 				BBE08E092AF124B800E79E8F /* RemoteFeedLoader.swift in Sources */,
 				BB3492C52B06F4B200FC7A71 /* HTTPClient.swift in Sources */,
 				BBF3259C2AE6342D00E38E30 /* FeedLoader.swift in Sources */,
+				BB3492C72B06F5C900FC7A71 /* FeedItemsMapper.swift in Sources */,
 				BBF3259A2AE6339E00E38E30 /* FeedItem.swift in Sources */,
 				BBF325842AE6310B00E38E30 /* SKEssentialFeed.docc in Sources */,
 			);
