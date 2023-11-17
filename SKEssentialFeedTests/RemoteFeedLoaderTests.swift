@@ -113,7 +113,7 @@ final class RemoteFeedLoaderTests: XCTestCase {
         let item = FeedItem(uuid: uuid, description: description, location: location, imageURL: imageURL)
         
         let json = [
-            "id": uuid.uuidString,
+            "uuid": uuid.uuidString,
             "description": description,
             "location": location,
             "image": imageURL.absoluteString
