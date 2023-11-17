@@ -55,8 +55,10 @@ final class RemoteFeedLoaderTests: XCTestCase {
         samples.enumerated().forEach { index, code in
           expect(sut,
                  toCompleteWithResult: .failure(.invalidData)) {
-              let clientError = NSError(domain: "Connectivity", code: 0)
-              client.complete(withStatusCode: 400, data: makeItemsJSON([]), at: index)
+              
+              client.complete(withStatusCode: code,
+                              data: makeItemsJSON([]),
+                              at: index)
           }
         }
     }
