@@ -42,7 +42,7 @@ final class RemoteFeedLoaderTests: XCTestCase {
         let (sut, client) = makeSUT()
         
         expect(sut,
-               toCompleteWithResult: .failure(.connectivity)) {
+               toCompleteWithResult: .failure(RemoteFeedLoader.Error.connectivity)) {
             let clientError = NSError(domain: "Connectivity", code: 0)
             client.complete(with: clientError)
         }
@@ -54,7 +54,7 @@ final class RemoteFeedLoaderTests: XCTestCase {
         let samples = [199,201,300,400,500]
         samples.enumerated().forEach { index, code in
           expect(sut,
-                 toCompleteWithResult: .failure(.invalidData)) {
+                 toCompleteWithResult: .failure(RemoteFeedLoader.Error.invalidData)) {
               
               client.complete(withStatusCode: code,
                               data: makeItemsJSON([]),
@@ -67,7 +67,7 @@ final class RemoteFeedLoaderTests: XCTestCase {
         let (sut, client) = makeSUT()
         
         expect(sut,
-               toCompleteWithResult: .failure(.invalidData)) {
+               toCompleteWithResult: .failure(RemoteFeedLoader.Error.invalidData)) {
             let invalidJSONData = Data("Invalid Data".utf8)
             client.complete(withStatusCode: 200, data: invalidJSONData)
         }
@@ -169,7 +169,7 @@ final class RemoteFeedLoaderTests: XCTestCase {
             switch (capturedResult, expectedResult) {
             case let (.success(capturedItems), .success(expectedItems)):
                 XCTAssertEqual(capturedItems, expectedItems, file: file, line: line)
-            case let (.failure(capturedError), .failure(expectedError)):
+            case let (.failure(capturedError as RemoteFeedLoader.Error), .failure(expectedError as RemoteFeedLoader.Error)):
                 XCTAssertEqual(capturedError, expectedError, file: file, line: line)
             default:
                 XCTFail("Expected Result \(expectedResult) got \(capturedResult) instead", file: file, line: line)
