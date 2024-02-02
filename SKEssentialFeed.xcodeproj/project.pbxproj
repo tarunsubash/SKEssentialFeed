@@ -10,6 +10,7 @@
 		BB3492C52B06F4B200FC7A71 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3492C42B06F4B200FC7A71 /* HTTPClient.swift */; };
 		BB3492C72B06F5C900FC7A71 /* FeedItemsMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3492C62B06F5C900FC7A71 /* FeedItemsMapper.swift */; };
 		BB4579472B5EC4A800BD3CA5 /* URLSessionHTTPClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4579462B5EC4A800BD3CA5 /* URLSessionHTTPClientTests.swift */; };
+		BB617C5B2B6D195300B62508 /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB617C5A2B6D195300B62508 /* XCTestCase+MemoryLeakTracking.swift */; };
 		BBE08E092AF124B800E79E8F /* RemoteFeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE08E082AF124B800E79E8F /* RemoteFeedLoader.swift */; };
 		BBF325842AE6310B00E38E30 /* SKEssentialFeed.docc in Sources */ = {isa = PBXBuildFile; fileRef = BBF325832AE6310B00E38E30 /* SKEssentialFeed.docc */; };
 		BBF3258A2AE6310B00E38E30 /* SKEssentialFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBF3257F2AE6310B00E38E30 /* SKEssentialFeed.framework */; };
@@ -33,6 +34,7 @@
 		BB3492C42B06F4B200FC7A71 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		BB3492C62B06F5C900FC7A71 /* FeedItemsMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItemsMapper.swift; sourceTree = "<group>"; };
 		BB4579462B5EC4A800BD3CA5 /* URLSessionHTTPClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClientTests.swift; sourceTree = "<group>"; };
+		BB617C5A2B6D195300B62508 /* XCTestCase+MemoryLeakTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryLeakTracking.swift"; sourceTree = "<group>"; };
 		BBE08E082AF124B800E79E8F /* RemoteFeedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFeedLoader.swift; sourceTree = "<group>"; };
 		BBF3257F2AE6310B00E38E30 /* SKEssentialFeed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SKEssentialFeed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBF325822AE6310B00E38E30 /* SKEssentialFeed.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKEssentialFeed.h; sourceTree = "<group>"; };
@@ -65,10 +67,19 @@
 		BB3492C82B06FE1600FC7A71 /* Feed API */ = {
 			isa = PBXGroup;
 			children = (
+				BB617C592B6D193400B62508 /* Helpers */,
 				BBF3259E2AEC1C2200E38E30 /* RemoteFeedLoaderTests.swift */,
 				BB4579462B5EC4A800BD3CA5 /* URLSessionHTTPClientTests.swift */,
 			);
 			path = "Feed API";
+			sourceTree = "<group>";
+		};
+		BB617C592B6D193400B62508 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				BB617C5A2B6D195300B62508 /* XCTestCase+MemoryLeakTracking.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		BBE08E072AF1248700E79E8F /* Feed API */ = {
@@ -251,6 +262,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BBF3259F2AEC1C2200E38E30 /* RemoteFeedLoaderTests.swift in Sources */,
+				BB617C5B2B6D195300B62508 /* XCTestCase+MemoryLeakTracking.swift in Sources */,
 				BB4579472B5EC4A800BD3CA5 /* URLSessionHTTPClientTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
