@@ -41,7 +41,7 @@ class URLSessionHTTPClientTests: XCTestCase {
         let error = NSError(domain: "any error", code: 1)
         URLProtocolStub.stub(data: nil, response: nil, error: error)
         
-        let sut = URLSessionHTTPClient()
+        let sut = makeSUT()
         
         let exp = expectation(description: "Wait for completion")
         
@@ -61,6 +61,10 @@ class URLSessionHTTPClientTests: XCTestCase {
     }
 
     // MARK: - Helpers
+    
+    private func makeSUT() -> URLSessionHTTPClient {
+        return URLSessionHTTPClient()
+    }
     
     private class URLProtocolStub: URLProtocol {
         private static var stubs: Stub?
