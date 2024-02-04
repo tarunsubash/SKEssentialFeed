@@ -1,0 +1,25 @@
+{
+  "configurations" : [
+    {
+      "id" : "256B38AC-2761-4A99-A232-A2A400240AC4",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "testExecutionOrdering" : "random"
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:SKEssentialFeed.xcodeproj",
+        "identifier" : "BBF325882AE6310B00E38E30",
+        "name" : "SKEssentialFeedTests"
+      }
+    }
+  ],
+  "version" : 1
+}
