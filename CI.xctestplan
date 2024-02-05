@@ -1,0 +1,40 @@
+{
+  "configurations" : [
+    {
+      "id" : "EE1475D0-D80F-4C72-8C6C-FC4B9E423743",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : {
+      "targets" : [
+        {
+          "containerPath" : "container:SKEssentialFeed.xcodeproj",
+          "identifier" : "BBF3257E2AE6310B00E38E30",
+          "name" : "SKEssentialFeed"
+        }
+      ]
+    },
+    "testExecutionOrdering" : "random"
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:SKEssentialFeed.xcodeproj",
+        "identifier" : "BB5AD1102B6FBD180099BF21",
+        "name" : "SKEssentialFeedAPIEndToEndTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:SKEssentialFeed.xcodeproj",
+        "identifier" : "BBF325882AE6310B00E38E30",
+        "name" : "SKEssentialFeedTests"
+      }
+    }
+  ],
+  "version" : 1
+}
