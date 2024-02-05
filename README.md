@@ -1,3 +1,6 @@
+![Build Status]
+(https://github.com/tarunsubash/SKEssentialFeed/actions/workflows/CI.yml/badge.svg)
+
 # SKEssentialFeed
 A repository to practice concepts learned during Lead Developer Essentials Program
 
