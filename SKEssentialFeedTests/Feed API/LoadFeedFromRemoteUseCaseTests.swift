@@ -1,5 +1,5 @@
 //
-//  RemoteFeedLoaderTests.swift
+//  LoadFeedFromRemoteUseCaseTests.swift
 //  SKEssentialFeedTests
 //
 //  Created by Subash on 27/10/23.
@@ -8,7 +8,7 @@
 import XCTest
 import SKEssentialFeed
 
-final class RemoteFeedLoaderTests: XCTestCase {
+final class LoadFeedFromRemoteUseCaseTests: XCTestCase {
     
     func testRemoteFeedLoader_WhenInitialized_DoesnotMakeAReuqest() {
         let (_, client) = makeSUT()
