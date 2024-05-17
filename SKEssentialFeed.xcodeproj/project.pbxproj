@@ -16,6 +16,8 @@
 		BB617C5B2B6D195300B62508 /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB617C5A2B6D195300B62508 /* XCTestCase+MemoryLeakTracking.swift */; };
 		BB617C5D2B6FB2EF00B62508 /* URLSessionHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB617C5C2B6FB2EF00B62508 /* URLSessionHTTPClient.swift */; };
 		BBE08E092AF124B800E79E8F /* RemoteFeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE08E082AF124B800E79E8F /* RemoteFeedLoader.swift */; };
+		BBF02FB62BF7A49600B15E09 /* LocalFeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF02FB52BF7A49600B15E09 /* LocalFeedLoader.swift */; };
+		BBF02FB82BF7A50A00B15E09 /* FeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF02FB72BF7A50A00B15E09 /* FeedStore.swift */; };
 		BBF325842AE6310B00E38E30 /* SKEssentialFeed.docc in Sources */ = {isa = PBXBuildFile; fileRef = BBF325832AE6310B00E38E30 /* SKEssentialFeed.docc */; };
 		BBF3258A2AE6310B00E38E30 /* SKEssentialFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBF3257F2AE6310B00E38E30 /* SKEssentialFeed.framework */; };
 		BBF325902AE6310B00E38E30 /* SKEssentialFeed.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF325822AE6310B00E38E30 /* SKEssentialFeed.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -53,6 +55,8 @@
 		BB617C5A2B6D195300B62508 /* XCTestCase+MemoryLeakTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryLeakTracking.swift"; sourceTree = "<group>"; };
 		BB617C5C2B6FB2EF00B62508 /* URLSessionHTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClient.swift; sourceTree = "<group>"; };
 		BBE08E082AF124B800E79E8F /* RemoteFeedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFeedLoader.swift; sourceTree = "<group>"; };
+		BBF02FB52BF7A49600B15E09 /* LocalFeedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFeedLoader.swift; sourceTree = "<group>"; };
+		BBF02FB72BF7A50A00B15E09 /* FeedStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedStore.swift; sourceTree = "<group>"; };
 		BBF3257F2AE6310B00E38E30 /* SKEssentialFeed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SKEssentialFeed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBF325822AE6310B00E38E30 /* SKEssentialFeed.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKEssentialFeed.h; sourceTree = "<group>"; };
 		BBF325832AE6310B00E38E30 /* SKEssentialFeed.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = SKEssentialFeed.docc; sourceTree = "<group>"; };
@@ -126,11 +130,21 @@
 			path = "Feed API";
 			sourceTree = "<group>";
 		};
+		BBF02FB42BF7A48100B15E09 /* FeedCache */ = {
+			isa = PBXGroup;
+			children = (
+				BBF02FB52BF7A49600B15E09 /* LocalFeedLoader.swift */,
+				BBF02FB72BF7A50A00B15E09 /* FeedStore.swift */,
+			);
+			path = FeedCache;
+			sourceTree = "<group>";
+		};
 		BBF325752AE6310B00E38E30 = {
 			isa = PBXGroup;
 			children = (
 				BB5AD11C2B6FC9BE0099BF21 /* CI.xctestplan */,
 				BB5AD10C2B6FBC750099BF21 /* SKEssentialFeedTest.xctestplan */,
+				BBF02FB42BF7A48100B15E09 /* FeedCache */,
 				BBF3259D2AE634D100E38E30 /* Feed Feature */,
 				BBE08E072AF1248700E79E8F /* Feed API */,
 				BBF325812AE6310B00E38E30 /* SKEssentialFeed */,
@@ -334,12 +348,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BBF02FB82BF7A50A00B15E09 /* FeedStore.swift in Sources */,
 				BB617C5D2B6FB2EF00B62508 /* URLSessionHTTPClient.swift in Sources */,
 				BBE08E092AF124B800E79E8F /* RemoteFeedLoader.swift in Sources */,
 				BB3492C52B06F4B200FC7A71 /* HTTPClient.swift in Sources */,
 				BBF3259C2AE6342D00E38E30 /* FeedLoader.swift in Sources */,
 				BB3492C72B06F5C900FC7A71 /* FeedItemsMapper.swift in Sources */,
 				BBF3259A2AE6339E00E38E30 /* FeedItem.swift in Sources */,
+				BBF02FB62BF7A49600B15E09 /* LocalFeedLoader.swift in Sources */,
 				BBF325842AE6310B00E38E30 /* SKEssentialFeed.docc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
