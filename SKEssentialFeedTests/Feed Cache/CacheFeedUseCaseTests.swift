@@ -81,11 +81,9 @@ final class CacheFeedUseCaseTests: XCTestCase {
         
         var sut: LocalFeedLoader? = LocalFeedLoader(store: store, currentDate: Date.init)
         
-        var recievedResults = [Error?]()
+        var recievedResults = [LocalFeedLoader.SaveResult]()
         
-        sut?.save([uniqueItem()], completion: { resultError in
-            recievedResults.append(resultError)
-        })
+        sut?.save([uniqueItem()], completion: { recievedResults.append($0) })
         sut = nil
         store.completeDeletion(with: anyError())
         
@@ -97,11 +95,9 @@ final class CacheFeedUseCaseTests: XCTestCase {
         
         var sut: LocalFeedLoader? = LocalFeedLoader(store: store, currentDate: Date.init)
         
-        var recievedResults = [Error?]()
+        var recievedResults = [LocalFeedLoader.SaveResult]()
         
-        sut?.save([uniqueItem()], completion: { resultError in
-            recievedResults.append(resultError)
-        })
+        sut?.save([uniqueItem()], completion: { recievedResults.append($0) })
         store.completeDeletionSuccessfully()
         sut = nil
         store.completeInsertion(with: anyError())
