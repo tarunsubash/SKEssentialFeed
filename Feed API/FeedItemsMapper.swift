@@ -12,7 +12,7 @@ internal class FeedItemsMapper {
     
     private static var OK_200: Int { return 200 }
    
-    internal static func map(_ data: Data, _ response: HTTPURLResponse) throws -> [FeedItem] {
+    internal static func map(_ data: Data, _ response: HTTPURLResponse) throws -> [FeedImage] {
         
         return try JSONDecoder().decode(Root.self, from: data).items.map { $0.item }
     }
