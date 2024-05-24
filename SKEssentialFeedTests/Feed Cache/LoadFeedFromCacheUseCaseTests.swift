@@ -120,7 +120,7 @@ final class LoadFeedFromCacheUseCaseTests: XCTestCase {
     }
     
     
-    func test_load_DeletesCacheOnSevenDaysOldCache() {
+    func test_load_hasNoSideEffectsOnSevenDaysOldCache() {
         let feed = uniqueImageFeed()
         let fixedCurrentDate = Date()
         
@@ -132,10 +132,10 @@ final class LoadFeedFromCacheUseCaseTests: XCTestCase {
         
         store.completeRetrieval(with: feed.local, timeStamp: sevenDaysOldTimeStamp)
         
-        XCTAssertEqual(store.recievedMessages, [.retrieve, .deleteCacheFeed])
+        XCTAssertEqual(store.recievedMessages, [.retrieve])
     }
     
-    func test_load_DeletesCacheOnMoreThanSevenDaysOldCache() {
+    func test_load_hasNoSideEffectsOnMoreThanSevenDaysOldCache() {
         let feed = uniqueImageFeed()
         let fixedCurrentDate = Date()
         
@@ -147,7 +147,7 @@ final class LoadFeedFromCacheUseCaseTests: XCTestCase {
         
         store.completeRetrieval(with: feed.local, timeStamp: moreThanSevenDaysOldTimeStamp)
         
-        XCTAssertEqual(store.recievedMessages, [.retrieve, .deleteCacheFeed])
+        XCTAssertEqual(store.recievedMessages, [.retrieve])
     }
     
     func test_loadDoesNotDeliverResultsAfterSUTHasBeenDealloacted() {
