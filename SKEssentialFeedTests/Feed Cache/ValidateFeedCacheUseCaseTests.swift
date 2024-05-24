@@ -15,6 +15,16 @@ final class ValidateFeedCacheUseCaseTests: XCTestCase {
         XCTAssertEqual(store.recievedMessages, [])
     }
     
+    func test_validateCache_deletesCacheOnRetrievalError() {
+        let (sut, store) = makeSUT()
+        
+        sut.validateCache()
+        
+        store.completeRetrieval(with: anyError())
+        
+        XCTAssertEqual(store.recievedMessages, [.retrieve, .deleteCacheFeed])
+    }
+    
     // MARK: - Helpers:
     
     private func makeSUT(currentDate: @escaping () -> Date = Date.init,
@@ -28,4 +38,6 @@ final class ValidateFeedCacheUseCaseTests: XCTestCase {
         
         return (sut, store)
     }
+    
+    private func anyError() -> NSError { NSError(domain: "any error", code: 0) }
 }
