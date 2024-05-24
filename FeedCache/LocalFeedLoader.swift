@@ -22,6 +22,13 @@ public final class LocalFeedLoader {
         self.currentDate = currentDate
     }
     
+    private func validate(_ timeStamp: Date) -> Bool {
+        guard let maxCacheAge = calendar.date(byAdding: .day, value: maxCacheAgeInDays, to: timeStamp) else { return false }
+        return currentDate() < maxCacheAge
+    }
+}
+
+extension LocalFeedLoader {
     public func save(_ feed: [FeedImage], completion: @escaping (SaveResult) -> Void) {
         store.deleteCachedFeed { [weak self] error in
             guard let self = self else { return }
@@ -33,6 +40,15 @@ public final class LocalFeedLoader {
         }
     }
     
+    private func cache(items: [FeedImage], with completion: @escaping (SaveResult) -> Void) {
+        store.insert(items.toLocal(), timeStamp: self.currentDate()) {  [weak self] error in
+            guard self != nil else { return }
+            completion(error)
+        }
+    }
+}
+
+extension LocalFeedLoader {
     public func load(completion: @escaping (LoadResult) -> Void) {
         store.retrieve { [weak self] result in
             guard let self = self else { return }
@@ -48,7 +64,9 @@ public final class LocalFeedLoader {
             }
         }
     }
-    
+}
+
+extension LocalFeedLoader {
     public func validateCache() {
         store.retrieve { [weak self] result in
             guard let self = self else { return }
@@ -60,18 +78,6 @@ public final class LocalFeedLoader {
                 self.store.deleteCachedFeed { _ in }
             default: break
             }
-        }
-    }
-    
-    private func validate(_ timeStamp: Date) -> Bool {
-        guard let maxCacheAge = calendar.date(byAdding: .day, value: maxCacheAgeInDays, to: timeStamp) else { return false }
-        return currentDate() < maxCacheAge
-    }
-    
-    private func cache(items: [FeedImage], with completion: @escaping (SaveResult) -> Void) {
-        store.insert(items.toLocal(), timeStamp: self.currentDate()) {  [weak self] error in
-            guard self != nil else { return }
-            completion(error)
         }
     }
 }
