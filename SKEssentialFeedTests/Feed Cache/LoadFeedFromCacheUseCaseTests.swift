@@ -151,7 +151,7 @@ final class LoadFeedFromCacheUseCaseTests: XCTestCase {
     }
     
     func test_loadDoesNotDeliverResultsAfterSUTHasBeenDealloacted() {
-        var store = FeedStoreSpy()
+        let store = FeedStoreSpy()
         
         var sut: LocalFeedLoader? = LocalFeedLoader(store: store, currentDate: Date.init)
         
