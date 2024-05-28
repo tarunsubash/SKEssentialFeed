@@ -11,8 +11,33 @@ import SKEssentialFeed
 class CodableFeedStore {
     
     private struct Cache: Codable {
-        let feed: [LocalFeedImage]
+        let feed: [CodableFeedImage]
         let timeStamp: Date
+        
+        var localFeed: [LocalFeedImage] {
+            feed.map { $0.local }
+        }
+    }
+    
+    private struct CodableFeedImage: Equatable, Codable {
+        public let uuid: UUID
+        public let description: String?
+        public let location: String?
+        public let url: URL
+        
+        public init(uuid: UUID, description: String? = nil, location: String? = nil, url: URL) {
+            self.uuid = uuid
+            self.description = description
+            self.location = location
+            self.url = url
+        }
+        
+        var local: LocalFeedImage {
+            LocalFeedImage(uuid: uuid,
+                           description: description,
+                           location: location,
+                           url: url)
+        }
     }
     
     private let storeURL = FileManager.default.urls(for: .documentDirectory,
@@ -22,12 +47,13 @@ class CodableFeedStore {
         guard let data = try? Data(contentsOf: storeURL) else { return completion(.empty) }
         let decoder = JSONDecoder()
         let cache = try! decoder.decode(Cache.self, from: data)
-        completion(.found(feed: cache.feed, timeStamp: cache.timeStamp))
+        completion(.found(feed: cache.localFeed, timeStamp: cache.timeStamp))
     }
     
     func insert(_ feed: [LocalFeedImage], timeStamp: Date, completion: @escaping FeedStore.InsertionCompletion) {
         let encoder = JSONEncoder()
-        let encoded = try! encoder.encode(Cache(feed: feed, timeStamp: timeStamp))
+        let cache = Cache(feed: feed.map{ CodableFeedImage(uuid: $0.uuid, description: $0.description, location: $0.location, url: $0.url)}, timeStamp: timeStamp)
+        let encoded = try! encoder.encode(cache)
         try! encoded.write(to: storeURL)
         completion(nil)
     }
