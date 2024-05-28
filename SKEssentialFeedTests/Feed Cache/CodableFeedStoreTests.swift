@@ -77,17 +77,7 @@ final class CodableFeedStoreTests: XCTestCase {
     
     func test_retrieve_deliversEmptyOnEmptyCache() {
         let sut = makeSUT()
-        let exp = expectation(description: "Wait for retrieve completion")
-        
-        sut.retrieve { result in
-            switch result {
-            case .empty: break
-            default: XCTFail("Expected empty result, got \(result) instead")
-            }
-            exp.fulfill()
-        }
-        
-        wait(for: [exp], timeout: 1.0)
+        expect(sut, toRetrieve: .empty)
     }
     
     func test_retrieve_hasNoSideEffectsOnEmptyCache() {
@@ -115,19 +105,11 @@ final class CodableFeedStoreTests: XCTestCase {
         
         sut.insert(feed, timeStamp: timeStamp) { insertionError in
             XCTAssertNil(insertionError, "Expected Feed to be inserted successfully")
-            sut.retrieve { retrieveResult in
-                switch retrieveResult {
-                case let .found(retrievedFeed, retrievedTimeStamp):
-                    XCTAssertEqual(retrievedFeed, feed)
-                    XCTAssertEqual(retrievedTimeStamp, timeStamp)
-                default:
-                    XCTFail("Expected Result to be found with \(feed) and \(timeStamp), got \(retrieveResult) instead")
-                }
-                exp.fulfill()
-            }
+            exp.fulfill()
         }
         
         wait(for: [exp], timeout: 1.0)
+        expect(sut, toRetrieve: .found(feed: feed, timeStamp: timeStamp))
     }
     
     func test_retrieve_hasNoSideEffectsOnNonEmptyCache() {
@@ -164,6 +146,24 @@ final class CodableFeedStoreTests: XCTestCase {
         let sut = CodableFeedStore(storeURL: testSpecificStoreURL())
         trackForMemoryLeaks(sut, file: file, line: line)
         return sut
+    }
+    
+    private func expect(_ sut: CodableFeedStore, toRetrieve expectedResult: RetrieveCachedFeedResult, file: StaticString = #file, line: UInt = #line) {
+        let exp = expectation(description: "Wait for retrieve completion")
+        
+        sut.retrieve { recievedResult in
+            switch (expectedResult, recievedResult) {
+            case (.empty, .empty):
+                break
+            case let (.found(expectedFeed, expectedTimeStamp), .found(recievedFeed, recievedTimeStamp)):
+                XCTAssertEqual(expectedFeed, recievedFeed, file: file, line: line)
+                XCTAssertEqual(expectedTimeStamp, recievedTimeStamp, file: file, line: line)
+            default:
+                XCTFail("Expected to retrieve \(expectedResult), got \(recievedResult) instead.")
+            }
+            exp.fulfill()
+        }
+        wait(for: [exp], timeout: 1.0)
     }
     
     private func testSpecificStoreURL() -> URL {
