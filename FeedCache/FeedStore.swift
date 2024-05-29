@@ -6,11 +6,13 @@
 //
 
 import Foundation
+
 public enum RetrieveCachedFeedResult {
     case empty
     case found(feed: [LocalFeedImage], timeStamp: Date)
     case failure(Error)
 }
+
 public protocol FeedStore {
     typealias DeletionCompletion = (Error?) -> Void
     typealias InsertionCompletion = (Error?) -> Void
