@@ -175,6 +175,23 @@
 			path = FeedStoreSpecs;
 			sourceTree = "<group>";
 		};
+		BBB146B92C10B58800A949F2 /* Infrastructure */ = {
+			isa = PBXGroup;
+			children = (
+				BBB146BA2C10B5D300A949F2 /* CoreData */,
+			);
+			path = Infrastructure;
+			sourceTree = "<group>";
+		};
+		BBB146BA2C10B5D300A949F2 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				BBB146AF2C096B9700A949F2 /* CoreDataFeedStore.swift */,
+				BBB146B62C10A88900A949F2 /* FeedStore.xcdatamodeld */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		BBE08E072AF1248700E79E8F /* Feed API */ = {
 			isa = PBXGroup;
 			children = (
@@ -190,12 +207,11 @@
 		BBF02FB42BF7A48100B15E09 /* FeedCache */ = {
 			isa = PBXGroup;
 			children = (
+				BBB146B92C10B58800A949F2 /* Infrastructure */,
 				BBF02FB52BF7A49600B15E09 /* LocalFeedLoader.swift */,
 				BBF02FB72BF7A50A00B15E09 /* FeedStore.swift */,
 				BB5D86702BFE3AE1002D42F0 /* LocalFeedImage.swift */,
 				BBB1469B2C0769A700A949F2 /* CodableFeedStore.swift */,
-				BBB146AF2C096B9700A949F2 /* CoreDataFeedStore.swift */,
-				BBB146B62C10A88900A949F2 /* FeedStore.xcdatamodeld */,
 			);
 			path = FeedCache;
 			sourceTree = "<group>";
@@ -790,8 +806,7 @@
 				BBB146B72C10A88900A949F2 /* FeedStore.xcdatamodel */,
 			);
 			currentVersion = BBB146B72C10A88900A949F2 /* FeedStore.xcdatamodel */;
-			name = FeedStore.xcdatamodeld;
-			path = /Users/subash/workspace/SKEssentialFeed/FeedCache/FeedStore.xcdatamodeld;
+			path = FeedStore.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
