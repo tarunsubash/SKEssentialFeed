@@ -34,6 +34,13 @@
         "identifier" : "BBF325882AE6310B00E38E30",
         "name" : "SKEssentialFeedTests"
       }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:SKEssentialFeed.xcodeproj",
+        "identifier" : "BBB146C52C114ED900A949F2",
+        "name" : "SKEssentialFeedCacheIntegrationTests"
+      }
     }
   ],
   "version" : 1
