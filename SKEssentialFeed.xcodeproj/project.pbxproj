@@ -104,6 +104,7 @@
 		BBB146C02C10B70E00A949F2 /* ManagedFeedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedFeedImage.swift; sourceTree = "<group>"; };
 		BBB146C62C114ED900A949F2 /* SKEssentialFeedCacheIntegrationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SKEssentialFeedCacheIntegrationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBB146C82C114ED900A949F2 /* SKEssentialFeedCacheIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKEssentialFeedCacheIntegrationTests.swift; sourceTree = "<group>"; };
+		BBB146D32C11572C00A949F2 /* SKEssentialFeedCacheIntegrationTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = SKEssentialFeedCacheIntegrationTests.xctestplan; sourceTree = "<group>"; };
 		BBE08E082AF124B800E79E8F /* RemoteFeedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFeedLoader.swift; sourceTree = "<group>"; };
 		BBF02FB52BF7A49600B15E09 /* LocalFeedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFeedLoader.swift; sourceTree = "<group>"; };
 		BBF02FB72BF7A50A00B15E09 /* FeedStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedStore.swift; sourceTree = "<group>"; };
@@ -253,6 +254,7 @@
 		BBF325752AE6310B00E38E30 = {
 			isa = PBXGroup;
 			children = (
+				BBB146D32C11572C00A949F2 /* SKEssentialFeedCacheIntegrationTests.xctestplan */,
 				BB5AD11C2B6FC9BE0099BF21 /* CI.xctestplan */,
 				BB5AD10C2B6FBC750099BF21 /* SKEssentialFeedTest.xctestplan */,
 				BBF02FB42BF7A48100B15E09 /* FeedCache */,
