@@ -84,7 +84,7 @@ class URLSessionHTTPClientTests: XCTestCase {
                                 line: UInt = #line) -> (response: HTTPURLResponse, data: Data)? {
         let result = resultFor(data: data, response: response, error: error)
         switch result {
-        case let .success(response, data):
+        case let .success((response, data)):
             return (response, data)
         default:
             XCTFail("Expected Success, got \(String(describing: result)) instead", file: file, line: line)
@@ -111,12 +111,12 @@ class URLSessionHTTPClientTests: XCTestCase {
                            response: URLResponse?,
                            error: Error?,
                            file: StaticString = #file,
-                           line: UInt = #line) -> HTTPClientResult? {
+                           line: UInt = #line) -> HTTPClient.Result? {
         URLProtocolStub.stub(data: data, response: response, error: error)
         let sut = makeSUT()
         let exp = expectation(description: "Wait for URL completion")
         
-        var recievedResult: HTTPClientResult?
+        var recievedResult: HTTPClient.Result?
         sut.get(from: anyURL()) { result in
             recievedResult = result
             exp.fulfill()
