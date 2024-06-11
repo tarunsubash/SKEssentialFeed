@@ -26,7 +26,7 @@ public class RemoteFeedLoader: FeedLoader {
         client.get(from: url) { [weak self] result in
             guard self != nil else { return }
             switch result {
-            case let .success(response, data):
+            case let .success((response, data)):
                 completion(RemoteFeedLoader.map(response, data))
             case .failure:
                 completion(.failure(RemoteFeedLoader.Error.connectivity))
