@@ -1,7 +1,7 @@
 {
   "configurations" : [
     {
-      "id" : "F83E60CE-17E5-4C92-8D2A-4859A390570B",
+      "id" : "548C3BBD-0BC7-460B-98C0-280E0ECF7D94",
       "name" : "Test Scheme Action",
       "options" : {
 
@@ -25,8 +25,8 @@
       "parallelizable" : true,
       "target" : {
         "containerPath" : "container:SKEssentialFeed.xcodeproj",
-        "identifier" : "BBB146C52C114ED900A949F2",
-        "name" : "SKEssentialFeedCacheIntegrationTests"
+        "identifier" : "BB5AD1102B6FBD180099BF21",
+        "name" : "SKEssentialFeedAPIEndToEndTests"
       }
     }
   ],
