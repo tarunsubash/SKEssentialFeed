@@ -17,7 +17,7 @@
 		<key>SKEssentialFeedAPIEndToEndTests.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>3</integer>
 		</dict>
 		<key>SKEssentialFeedCacheIntegrationTests.xcscheme_^#shared#^_</key>
 		<dict>
@@ -27,6 +27,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>BB5AD1102B6FBD180099BF21</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>BBB146C52C114ED900A949F2</key>
 		<dict>
 			<key>primary</key>
