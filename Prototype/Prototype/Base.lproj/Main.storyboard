@@ -26,7 +26,7 @@
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FeedImageCell" rowHeight="582" id="Xcf-r0-pPX">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FeedImageCell" rowHeight="582" id="Xcf-r0-pPX" customClass="FeedImageCell" customModule="Prototype" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="66" width="393" height="582"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Xcf-r0-pPX" id="0wb-GE-iwJ">
@@ -112,6 +112,12 @@ Description, Description, Description, Description</string>
                                         <constraint firstAttribute="bottomMargin" secondItem="MRp-KY-x01" secondAttribute="bottom" priority="999" constant="6" id="sQD-qW-Seg"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="descriptionLabel" destination="bng-8v-Xiw" id="GCt-vS-5DK"/>
+                                    <outlet property="feedImageView" destination="Y2m-iF-8uG" id="uyX-OZ-27D"/>
+                                    <outlet property="locationContainer" destination="6yp-5x-h9S" id="gO8-wG-NZc"/>
+                                    <outlet property="locationLabel" destination="HUP-E4-KEu" id="rFO-IQ-8hI"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
