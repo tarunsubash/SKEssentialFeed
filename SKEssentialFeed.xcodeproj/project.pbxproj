@@ -23,6 +23,7 @@
 		BB617C5B2B6D195300B62508 /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB617C5A2B6D195300B62508 /* XCTestCase+MemoryLeakTracking.swift */; };
 		BB617C5D2B6FB2EF00B62508 /* URLSessionHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB617C5C2B6FB2EF00B62508 /* URLSessionHTTPClient.swift */; };
 		BB95F0A42C3EC91B00B57969 /* SKEssentialFeediOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB95F09A2C3EC91B00B57969 /* SKEssentialFeediOS.framework */; };
+		BBAD7A312C4015E800CCDFC0 /* FeedViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBAD7A302C4015E800CCDFC0 /* FeedViewControllerTests.swift */; };
 		BBB1469E2C0778D000A949F2 /* FeedStoreSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB1469D2C0778D000A949F2 /* FeedStoreSpecs.swift */; };
 		BBB146A02C08C2AA00A949F2 /* XCTestCase+FeedStoreSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB1469F2C08C2AA00A949F2 /* XCTestCase+FeedStoreSpecs.swift */; };
 		BBB146A22C08C8E700A949F2 /* XCTestCase+FailableRetrieveFeedStoreSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB146A12C08C8E700A949F2 /* XCTestCase+FailableRetrieveFeedStoreSpecs.swift */; };
@@ -103,6 +104,8 @@
 		BB95F09A2C3EC91B00B57969 /* SKEssentialFeediOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SKEssentialFeediOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB95F0A32C3EC91B00B57969 /* SKEssentialFeediOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SKEssentialFeediOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB95F0B12C3ECB6B00B57969 /* SKEssentialFeediOS.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = SKEssentialFeediOS.xctestplan; sourceTree = "<group>"; };
+		BBAD7A302C4015E800CCDFC0 /* FeedViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewControllerTests.swift; sourceTree = "<group>"; };
+		BBAD7A342C40184200CCDFC0 /* SKEssentialFeediOSTests-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKEssentialFeediOSTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		BBB1469D2C0778D000A949F2 /* FeedStoreSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedStoreSpecs.swift; sourceTree = "<group>"; };
 		BBB1469F2C08C2AA00A949F2 /* XCTestCase+FeedStoreSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+FeedStoreSpecs.swift"; sourceTree = "<group>"; };
 		BBB146A12C08C8E700A949F2 /* XCTestCase+FailableRetrieveFeedStoreSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+FailableRetrieveFeedStoreSpecs.swift"; sourceTree = "<group>"; };
@@ -225,6 +228,8 @@
 		BB95F0A72C3EC91B00B57969 /* SKEssentialFeediOSTests */ = {
 			isa = PBXGroup;
 			children = (
+				BBAD7A342C40184200CCDFC0 /* SKEssentialFeediOSTests-Bridging-Header.h */,
+				BBAD7A302C4015E800CCDFC0 /* FeedViewControllerTests.swift */,
 			);
 			path = SKEssentialFeediOSTests;
 			sourceTree = "<group>";
@@ -514,6 +519,7 @@
 					};
 					BB95F0A22C3EC91B00B57969 = {
 						CreatedOnToolsVersion = 15.4;
+						LastSwiftMigration = 1540;
 					};
 					BBB146C52C114ED900A949F2 = {
 						CreatedOnToolsVersion = 15.4;
@@ -616,6 +622,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BBAD7A312C4015E800CCDFC0 /* FeedViewControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -813,6 +820,7 @@
 		BB95F0AF2C3EC91B00B57969 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6Y7B4Z29JH;
@@ -823,6 +831,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "SKEssentialFeediOSTests/SKEssentialFeediOSTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -831,6 +841,7 @@
 		BB95F0B02C3EC91B00B57969 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6Y7B4Z29JH;
@@ -841,6 +852,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "SKEssentialFeediOSTests/SKEssentialFeediOSTests-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
