@@ -11,15 +11,15 @@ import SKEssentialFeed
 import SKEssentialFeediOS
 
 final class FeedViewControllerTests: XCTestCase {
+    
+    
     func test_loadFeedActions_requestFeedFromLoader() {
         let (sut, loader) = makeSUT()
         
         XCTAssertEqual(loader.loadCallCount, 0, "Expected no loading requests before view is loaded")
 
-        sut.loadViewIfNeeded()
-        sut.replaceRefreshControlWithFakeForiOS17Support()
-        sut.beginAppearanceTransition(true, animated: false)
-        sut.endAppearanceTransition()
+        simulateViewDidLoad(on: sut)
+        simulateViewIsAppearing(on: sut)
         
         XCTAssertEqual(loader.loadCallCount, 1, "Expected a loading request once view is loaded")
         
@@ -35,12 +35,11 @@ final class FeedViewControllerTests: XCTestCase {
     func test_loadingFeedIndicator_isVisibleWhileLoadingFeed() {
         let (sut, loader) = makeSUT()
         
-        sut.loadViewIfNeeded()
-        sut.replaceRefreshControlWithFakeForiOS17Support()
+        simulateViewDidLoad(on: sut)
+        
         XCTAssertFalse(sut.isShowingLoadingIndicator, "Loading Indicator Not Expected as view is not visible yet")
         
-        sut.beginAppearanceTransition(true, animated: false)
-        sut.endAppearanceTransition()
+        simulateViewIsAppearing(on: sut)
         
         XCTAssertTrue(sut.isShowingLoadingIndicator, "Expected loading indicator once view is loaded")
     
@@ -76,6 +75,16 @@ final class FeedViewControllerTests: XCTestCase {
         func completeFeedLoading(at index: Int) {
             completions[index](.success([]))
         }
+    }
+    
+    private func simulateViewDidLoad(on sut: FeedViewController) {
+        sut.loadViewIfNeeded()
+        sut.replaceRefreshControlWithFakeForiOS17Support()
+    }
+    
+    private func simulateViewIsAppearing(on sut: FeedViewController) {
+        sut.beginAppearanceTransition(true, animated: false)
+        sut.endAppearanceTransition()
     }
 }
 
