@@ -8,43 +8,59 @@
 import UIKit
 import SKEssentialFeed
 
+public final class FeedRefreshViewController: NSObject {
+    public lazy var view: UIRefreshControl = {
+        let view = UIRefreshControl()
+        view.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        return view
+    }()
+    
+    private let feedLoader: FeedLoader
+    
+    public init(feedLoader: FeedLoader) {
+        self.feedLoader = feedLoader
+    }
+    
+    var onRefresh: (([FeedImage]) -> Void)?
+    
+    @objc func refresh() {
+        view.beginRefreshing()
+        feedLoader.load { [weak self] result in
+            if let feed = try? result.get() {
+                self?.onRefresh?(feed)
+            }
+            self?.view.endRefreshing()
+        }
+    }
+}
+
 public final class FeedViewController: UITableViewController, UITableViewDataSourcePrefetching {
-    private var feedLoader: FeedLoader?
     private var imageLoader: FeedImageDataLoader?
-    private var tableModel = [FeedImage]()
+    private var tableModel = [FeedImage]() {
+        didSet { tableView.reloadData() }
+    }
     private var tasks = [IndexPath: FeedImageDataLoaderTask]()
     
+    public var refreshController: FeedRefreshViewController?
     public convenience init(feedLoader: FeedLoader, imageLoader: FeedImageDataLoader) {
         self.init()
-        self.feedLoader = feedLoader
+        self.refreshController = FeedRefreshViewController(feedLoader: feedLoader)
         self.imageLoader = imageLoader
     }
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-        refreshControl = UIRefreshControl()
-        refreshControl?.addTarget(self, action: #selector(load), for: .valueChanged)
+        
+        refreshControl = refreshController?.view
+        refreshController?.onRefresh = { [weak self] feed in
+            self?.tableModel = feed
+        }
         tableView.prefetchDataSource = self
-    }
-    
-    public override func viewIsAppearing(_ animated: Bool) {
-        super.viewIsAppearing(animated)
-        load()
-    }
-    
-    @objc private func load() {
-        refreshControl?.beginRefreshing()
-        feedLoader?.load(completion: { [weak self] result in
-            if let feed = try? result.get() {
-                self?.tableModel = feed
-                self?.tableView.reloadData()
-            }
-            self?.refreshControl?.endRefreshing()
-        })
+        refreshController?.refresh()
     }
     
     public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        tableModel.count
+        return tableModel.count
     }
     
     public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -56,9 +72,11 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
         cell.feedImageView.image = nil
         cell.feedImageRetryButton.isHidden = true
         cell.feedImageContainer.startShimmering()
+        
         let loadImage = { [weak self, weak cell] in
             guard let self = self else { return }
-            self.tasks[indexPath] = imageLoader?.loadImageData(from: cellModel.url) { [weak cell] result in
+            
+            self.tasks[indexPath] = self.imageLoader?.loadImageData(from: cellModel.url) { [weak cell] result in
                 let data = try? result.get()
                 let image = data.map(UIImage.init) ?? nil
                 cell?.feedImageView.image = image
@@ -66,19 +84,21 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
                 cell?.feedImageContainer.stopShimmering()
             }
         }
+        
         cell.onRetry = loadImage
         loadImage()
+        
         return cell
     }
     
     public override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-       cancelTask(forRowAt: indexPath)
+        cancelTask(forRowAt: indexPath)
     }
     
     public func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
         indexPaths.forEach { indexPath in
             let cellModel = tableModel[indexPath.row]
-            tasks[indexPath] = imageLoader?.loadImageData(from: cellModel.url, completion: { _ in })
+            tasks[indexPath] = imageLoader?.loadImageData(from: cellModel.url) { _ in }
         }
     }
     
