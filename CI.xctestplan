@@ -15,6 +15,11 @@
           "containerPath" : "container:SKEssentialFeed.xcodeproj",
           "identifier" : "BBF3257E2AE6310B00E38E30",
           "name" : "SKEssentialFeed"
+        },
+        {
+          "containerPath" : "container:SKEssentialFeed.xcodeproj",
+          "identifier" : "BB95F0992C3EC91B00B57969",
+          "name" : "SKEssentialFeediOS"
         }
       ]
     },
@@ -40,6 +45,13 @@
         "containerPath" : "container:SKEssentialFeed.xcodeproj",
         "identifier" : "BBB146C52C114ED900A949F2",
         "name" : "SKEssentialFeedCacheIntegrationTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:SKEssentialFeed.xcodeproj",
+        "identifier" : "BB95F0A22C3EC91B00B57969",
+        "name" : "SKEssentialFeediOSTests"
       }
     }
   ],
