@@ -295,7 +295,7 @@ final class FeedViewControllerTests: XCTestCase {
         sut.replaceRefreshControlWithFakeForiOS17Support()
     }
     
-    private func simulateViewIsAppearing(on sut: FeedViewController) {
+    private func simulateViewIsAppearing(on sut: FeedViewController){
         sut.beginAppearanceTransition(true, animated: false)
         sut.endAppearanceTransition()
     }
