@@ -29,23 +29,10 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <TestPlans>
          <TestPlanReference
-            reference = "container:SKEssentialFeedTests/SKEssentialFeedTest.xctestplan"
+            reference = "container:CI.xctestplan"
             default = "YES">
          </TestPlanReference>
       </TestPlans>
-      <Testables>
-         <TestableReference
-            skipped = "NO"
-            parallelizable = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BBF325882AE6310B00E38E30"
-               BuildableName = "SKEssentialFeedTests.xctest"
-               BlueprintName = "SKEssentialFeedTests"
-               ReferencedContainer = "container:SKEssentialFeed.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-      </Testables>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"

@@ -4,23 +4,8 @@
    version = "1.7">
    <BuildAction
       parallelizeBuildables = "YES"
-      buildImplicitDependencies = "YES">
-      <BuildActionEntries>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BBF3257E2AE6310B00E38E30"
-               BuildableName = "SKEssentialFeed.framework"
-               BlueprintName = "SKEssentialFeed"
-               ReferencedContainer = "container:SKEssentialFeed.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-      </BuildActionEntries>
+      buildImplicitDependencies = "YES"
+      buildArchitectures = "Automatic">
    </BuildAction>
    <TestAction
       buildConfiguration = "Debug"
@@ -29,7 +14,7 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <TestPlans>
          <TestPlanReference
-            reference = "container:SKEssentialFeedTests/SKEssentialFeedTest.xctestplan"
+            reference = "container:SKEssentialFeedAPIEndToEndTests.xctestplan"
             default = "YES">
          </TestPlanReference>
       </TestPlans>
@@ -39,9 +24,9 @@
             parallelizable = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BBF325882AE6310B00E38E30"
-               BuildableName = "SKEssentialFeedTests.xctest"
-               BlueprintName = "SKEssentialFeedTests"
+               BlueprintIdentifier = "BB5AD1102B6FBD180099BF21"
+               BuildableName = "SKEssentialFeedAPIEndToEndTests.xctest"
+               BlueprintName = "SKEssentialFeedAPIEndToEndTests"
                ReferencedContainer = "container:SKEssentialFeed.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -64,15 +49,6 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "BBF3257E2AE6310B00E38E30"
-            BuildableName = "SKEssentialFeed.framework"
-            BlueprintName = "SKEssentialFeed"
-            ReferencedContainer = "container:SKEssentialFeed.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

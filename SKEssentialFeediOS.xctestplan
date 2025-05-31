@@ -1,7 +1,7 @@
 {
   "configurations" : [
     {
-      "id" : "F83E60CE-17E5-4C92-8D2A-4859A390570B",
+      "id" : "4EEC082A-67E2-43C7-98E4-0F781213A4B8",
       "name" : "Test Scheme Action",
       "options" : {
 
@@ -13,8 +13,8 @@
       "targets" : [
         {
           "containerPath" : "container:SKEssentialFeed.xcodeproj",
-          "identifier" : "BBF3257E2AE6310B00E38E30",
-          "name" : "SKEssentialFeed"
+          "identifier" : "BB95F0992C3EC91B00B57969",
+          "name" : "SKEssentialFeediOS"
         }
       ]
     },
@@ -25,8 +25,8 @@
       "parallelizable" : true,
       "target" : {
         "containerPath" : "container:SKEssentialFeed.xcodeproj",
-        "identifier" : "BBB146C52C114ED900A949F2",
-        "name" : "SKEssentialFeedCacheIntegrationTests"
+        "identifier" : "BB95F0A22C3EC91B00B57969",
+        "name" : "SKEssentialFeediOSTests"
       }
     }
   ],

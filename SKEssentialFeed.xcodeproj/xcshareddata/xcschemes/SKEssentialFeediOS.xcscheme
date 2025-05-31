@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1520"
+   LastUpgradeVersion = "1540"
    version = "1.7">
    <BuildAction
       parallelizeBuildables = "YES"
-      buildImplicitDependencies = "YES">
+      buildImplicitDependencies = "YES"
+      buildArchitectures = "Automatic">
       <BuildActionEntries>
          <BuildActionEntry
             buildForTesting = "YES"
@@ -14,9 +15,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BBF3257E2AE6310B00E38E30"
-               BuildableName = "SKEssentialFeed.framework"
-               BlueprintName = "SKEssentialFeed"
+               BlueprintIdentifier = "BB95F0992C3EC91B00B57969"
+               BuildableName = "SKEssentialFeediOS.framework"
+               BlueprintName = "SKEssentialFeediOS"
                ReferencedContainer = "container:SKEssentialFeed.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -29,10 +30,23 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <TestPlans>
          <TestPlanReference
-            reference = "container:CI.xctestplan"
+            reference = "container:SKEssentialFeediOS.xctestplan"
             default = "YES">
          </TestPlanReference>
       </TestPlans>
+      <Testables>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "BB95F0A22C3EC91B00B57969"
+               BuildableName = "SKEssentialFeediOSTests.xctest"
+               BlueprintName = "SKEssentialFeediOSTests"
+               ReferencedContainer = "container:SKEssentialFeed.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+      </Testables>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -54,9 +68,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "BBF3257E2AE6310B00E38E30"
-            BuildableName = "SKEssentialFeed.framework"
-            BlueprintName = "SKEssentialFeed"
+            BlueprintIdentifier = "BB95F0992C3EC91B00B57969"
+            BuildableName = "SKEssentialFeediOS.framework"
+            BlueprintName = "SKEssentialFeediOS"
             ReferencedContainer = "container:SKEssentialFeed.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
