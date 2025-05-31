@@ -277,13 +277,13 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		BB80FD612DEA8DD900FD5BC0 /* Models */ = {
+		BB80FD612DEA8DD900FD5BC0 /* Feed Presentation */ = {
 			isa = PBXGroup;
 			children = (
 				BB80FD622DEA8DEC00FD5BC0 /* FeedViewModel.swift */,
 				BB80FD642DEA95F500FD5BC0 /* FeedImageViewModel.swift */,
 			);
-			path = Models;
+			path = "Feed Presentation";
 			sourceTree = "<group>";
 		};
 		BB95F09B2C3EC91B00B57969 /* SKEssentialFeediOS */ = {
@@ -395,7 +395,7 @@
 		BBB9D0BE2D4BBC6000BFDC13 /* FeedUI */ = {
 			isa = PBXGroup;
 			children = (
-				BB80FD612DEA8DD900FD5BC0 /* Models */,
+				BB80FD612DEA8DD900FD5BC0 /* Feed Presentation */,
 				BBB9D0C72D4CE65D00BFDC13 /* Composers */,
 				BBB9D0C02D4BBCD500BFDC13 /* Feed Image Loader */,
 				BBB9D0B42D4BBA4A00BFDC13 /* Views */,

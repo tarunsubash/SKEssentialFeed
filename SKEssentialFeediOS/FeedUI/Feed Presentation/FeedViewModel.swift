@@ -5,7 +5,6 @@
 //  Created by Subash on 31/05/25.
 //
 
-import Foundation
 import SKEssentialFeed
 
 public final class FeedViewModel {
