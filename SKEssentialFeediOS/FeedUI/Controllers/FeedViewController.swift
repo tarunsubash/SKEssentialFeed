@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SKEssentialFeed
 
 public final class FeedViewController: UITableViewController, UITableViewDataSourcePrefetching {
     private var cellControllers = [IndexPath: FeedImageCellController]()
