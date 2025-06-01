@@ -11,22 +11,19 @@ import SKEssentialFeed
 public final class FeedUIComposer {
     public static func feedComposeWith(feedLoader: FeedLoader, imageLoader: FeedImageDataLoader) -> FeedViewController {
         let presentationAdapter = FeedLoaderPresentationAdapter(feedLoader: feedLoader)
-        let refreshController = FeedRefreshViewController(delegate: presentationAdapter)
-        let feedController = FeedViewController(refreshController: refreshController)
+        
+        let bundle = Bundle(for: FeedViewController.self)
+        let storyBoard = UIStoryboard(name: "Feed", bundle: bundle)
+        let feedController = storyBoard.instantiateInitialViewController() as! FeedViewController
+    
+        feedController.delegate = presentationAdapter
+        
         presentationAdapter.presenter = FeedPresenter(
-            loadingView: WeakRefVirtualProxy(refreshController),
+            loadingView: WeakRefVirtualProxy(feedController),
             feedView: FeedViewAdapter(controller: feedController, imageLoader: imageLoader))
         return feedController
     }
-    
-//    private static func adaptFeedToCellControllers(forwardingTo controller: FeedViewController, loader: FeedImageDataLoader) -> ([FeedImage]) -> Void {
-//        return { [weak controller] feed in
-//            controller?.tableModel = feed.map({ model in
-//                FeedImageCellController(viewModel: FeedImageViewModel(model: model, imageLoader: loader, imageTransformer: UIImage.init))
-//            })
-//            
-//        }
-//    }
+
 }
 
 private final class WeakRefVirtualProxy<T: AnyObject> {
@@ -72,7 +69,7 @@ private final class FeedViewAdapter: FeedView {
     }
 }
 
-private final class FeedLoaderPresentationAdapter: FeedRefreshViewControllerDelegate {
+private final class FeedLoaderPresentationAdapter: FeedViewControllerDelegate {
     private let feedLoader: FeedLoader
     var presenter: FeedPresenter?
 
