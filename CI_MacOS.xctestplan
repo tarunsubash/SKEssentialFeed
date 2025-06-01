@@ -1,0 +1,52 @@
+{
+  "configurations" : [
+    {
+      "id" : "EE1475D0-D80F-4C72-8C6C-FC4B9E423743",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : {
+      "targets" : [
+        {
+          "containerPath" : "container:SKEssentialFeed.xcodeproj",
+          "identifier" : "BBF3257E2AE6310B00E38E30",
+          "name" : "SKEssentialFeed"
+        },
+        {
+          "containerPath" : "container:SKEssentialFeed.xcodeproj",
+          "identifier" : "BB95F0992C3EC91B00B57969",
+          "name" : "SKEssentialFeediOS"
+        }
+      ]
+    },
+    "testExecutionOrdering" : "random"
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:SKEssentialFeed.xcodeproj",
+        "identifier" : "BB5AD1102B6FBD180099BF21",
+        "name" : "SKEssentialFeedAPIEndToEndTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:SKEssentialFeed.xcodeproj",
+        "identifier" : "BBF325882AE6310B00E38E30",
+        "name" : "SKEssentialFeedTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:SKEssentialFeed.xcodeproj",
+        "identifier" : "BBB146C52C114ED900A949F2",
+        "name" : "SKEssentialFeedCacheIntegrationTests"
+      }
+    }
+  ],
+  "version" : 1
+}
