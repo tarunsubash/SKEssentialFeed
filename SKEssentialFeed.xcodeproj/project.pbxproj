@@ -37,6 +37,8 @@
 		BB9320382DEC297100DE5818 /* MainQueueDispatchDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9320372DEC297100DE5818 /* MainQueueDispatchDecorator.swift */; };
 		BB93203A2DEC29CD00DE5818 /* WeakRefVirtualProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9320392DEC29CD00DE5818 /* WeakRefVirtualProxy.swift */; };
 		BB93203C2DEC2A4800DE5818 /* FeedImageDataLoaderPresentationAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB93203B2DEC2A4800DE5818 /* FeedImageDataLoaderPresentationAdapter.swift */; };
+		BB93203E2DEC2AAF00DE5818 /* FeedViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB93203D2DEC2AAF00DE5818 /* FeedViewAdapter.swift */; };
+		BB9320402DEC2AED00DE5818 /* FeedLoaderPresentationAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB93203F2DEC2AED00DE5818 /* FeedLoaderPresentationAdapter.swift */; };
 		BB95F0A42C3EC91B00B57969 /* SKEssentialFeediOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB95F09A2C3EC91B00B57969 /* SKEssentialFeediOS.framework */; };
 		BBAD7A312C4015E800CCDFC0 /* FeedUIIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBAD7A302C4015E800CCDFC0 /* FeedUIIntegrationTests.swift */; };
 		BBAD7A362C4019C100CCDFC0 /* SKEssentialFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBF3257F2AE6310B00E38E30 /* SKEssentialFeed.framework */; platformFilter = ios; };
@@ -171,6 +173,8 @@
 		BB9320372DEC297100DE5818 /* MainQueueDispatchDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainQueueDispatchDecorator.swift; sourceTree = "<group>"; };
 		BB9320392DEC29CD00DE5818 /* WeakRefVirtualProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakRefVirtualProxy.swift; sourceTree = "<group>"; };
 		BB93203B2DEC2A4800DE5818 /* FeedImageDataLoaderPresentationAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageDataLoaderPresentationAdapter.swift; sourceTree = "<group>"; };
+		BB93203D2DEC2AAF00DE5818 /* FeedViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewAdapter.swift; sourceTree = "<group>"; };
+		BB93203F2DEC2AED00DE5818 /* FeedLoaderPresentationAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedLoaderPresentationAdapter.swift; sourceTree = "<group>"; };
 		BB95F0942C3EC76500B57969 /* SKEssentialFeedAPIEndToEndTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = SKEssentialFeedAPIEndToEndTests.xctestplan; sourceTree = "<group>"; };
 		BB95F09A2C3EC91B00B57969 /* SKEssentialFeediOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SKEssentialFeediOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB95F0A32C3EC91B00B57969 /* SKEssentialFeediOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SKEssentialFeediOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -469,6 +473,8 @@
 			isa = PBXGroup;
 			children = (
 				BBB9D0C82D4CE66B00BFDC13 /* FeedUIComposer.swift */,
+				BB93203F2DEC2AED00DE5818 /* FeedLoaderPresentationAdapter.swift */,
+				BB93203D2DEC2AAF00DE5818 /* FeedViewAdapter.swift */,
 				BB93203B2DEC2A4800DE5818 /* FeedImageDataLoaderPresentationAdapter.swift */,
 				BB9320392DEC29CD00DE5818 /* WeakRefVirtualProxy.swift */,
 				BB9320372DEC297100DE5818 /* MainQueueDispatchDecorator.swift */,
@@ -839,8 +845,10 @@
 				BB9320382DEC297100DE5818 /* MainQueueDispatchDecorator.swift in Sources */,
 				BBB9D0A52D42969C00BFDC13 /* FeedViewController.swift in Sources */,
 				BBB9D0A72D43DC9200BFDC13 /* FeedImageCell.swift in Sources */,
+				BB9320402DEC2AED00DE5818 /* FeedLoaderPresentationAdapter.swift in Sources */,
 				BB93203C2DEC2A4800DE5818 /* FeedImageDataLoaderPresentationAdapter.swift in Sources */,
 				BB80FD652DEA95F500FD5BC0 /* FeedImageViewModel.swift in Sources */,
+				BB93203E2DEC2AAF00DE5818 /* FeedViewAdapter.swift in Sources */,
 				BBB9D0C62D4CE58B00BFDC13 /* FeedImageCellController.swift in Sources */,
 				BBB9D0C92D4CE66B00BFDC13 /* FeedUIComposer.swift in Sources */,
 			);
