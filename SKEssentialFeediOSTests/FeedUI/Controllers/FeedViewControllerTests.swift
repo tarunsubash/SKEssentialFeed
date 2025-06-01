@@ -12,6 +12,14 @@ import SKEssentialFeediOS
 
 final class FeedViewControllerTests: XCTestCase {
     
+    func test_feedView_hasTitle() {
+        let (sut, _) = makeSUT()
+        
+        sut.loadViewIfNeeded()
+        
+        XCTAssertEqual(sut.title, "My Feed")
+    }
+    
     
     func test_loadFeedActions_requestFeedFromLoader() {
         let (sut, loader) = makeSUT()
@@ -231,7 +239,7 @@ final class FeedViewControllerTests: XCTestCase {
         loader.completeImageLoadingWithError(at: 0)
         loader.completeImageLoadingWithError(at: 1)
         XCTAssertEqual(loader.loadedImageUrls, [image0.url, image1.url], "Expected only two image URL requests before retry action")
-
+        
         view0?.simulateRetryAction()
         XCTAssertEqual(loader.loadedImageUrls, [image0.url, image1.url, image0.url], "Expected third imageURL request after first view retry action")
         
