@@ -1,5 +1,5 @@
 //
-//  FeedViewControllerTests.swift
+//  FeedUIIntegrationTests.swift
 //  SKEssentialFeediOSTests
 //
 //  Created by Subash on 11/07/24.
@@ -10,7 +10,15 @@ import UIKit
 import SKEssentialFeed
 import SKEssentialFeediOS
 
-final class FeedViewControllerTests: XCTestCase {
+final class FeedUIIntegrationTests: XCTestCase {
+    
+    func test_feedView_hasTitle() {
+        let (sut, _) = makeSUT()
+        
+        sut.loadViewIfNeeded()
+        
+        XCTAssertEqual(sut.title, localized("FEED_VIEW_TITLE"))
+    }
     
     
     func test_loadFeedActions_requestFeedFromLoader() {
@@ -232,7 +240,7 @@ final class FeedViewControllerTests: XCTestCase {
         loader.completeImageLoadingWithError(at: 0)
         loader.completeImageLoadingWithError(at: 1)
         XCTAssertEqual(loader.loadedImageUrls, [image0.url, image1.url], "Expected only two image URL requests before retry action")
-
+        
         view0?.simulateRetryAction()
         XCTAssertEqual(loader.loadedImageUrls, [image0.url, image1.url, image0.url], "Expected third imageURL request after first view retry action")
         

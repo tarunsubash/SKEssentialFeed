@@ -1,5 +1,5 @@
 //
-//  FeedViewControllerTests+LoaderSpy.swift
+//  FeedUIIntegrationTests+LoaderSpy.swift
 //  SKEssentialFeediOSTests
 //
 //  Created by Subash on 30/01/25.
@@ -9,7 +9,7 @@ import Foundation
 import SKEssentialFeed
 import SKEssentialFeediOS
 
-extension FeedViewControllerTests {
+extension FeedUIIntegrationTests {
     class LoaderSpy: FeedLoader, FeedImageDataLoader {
         
         
