@@ -161,6 +161,7 @@
 		BB93202C2DEBFBB700DE5818 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Feed.strings; sourceTree = "<group>"; };
 		BB93202E2DEBFC4A00DE5818 /* FeedUIIntegrationTests+Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedUIIntegrationTests+Localization.swift"; sourceTree = "<group>"; };
 		BB9320302DEBFD8200DE5818 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Feed.strings"; sourceTree = "<group>"; };
+		BB9320312DEBFDB600DE5818 /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = el.lproj/Feed.strings; sourceTree = "<group>"; };
 		BB95F0942C3EC76500B57969 /* SKEssentialFeedAPIEndToEndTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = SKEssentialFeedAPIEndToEndTests.xctestplan; sourceTree = "<group>"; };
 		BB95F09A2C3EC91B00B57969 /* SKEssentialFeediOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SKEssentialFeediOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB95F0A32C3EC91B00B57969 /* SKEssentialFeediOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SKEssentialFeediOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -725,6 +726,7 @@
 				en,
 				Base,
 				"pt-BR",
+				el,
 			);
 			mainGroup = BBF325752AE6310B00E38E30;
 			productRefGroup = BBF325802AE6310B00E38E30 /* Products */;
@@ -930,6 +932,7 @@
 			children = (
 				BB93202C2DEBFBB700DE5818 /* en */,
 				BB9320302DEBFD8200DE5818 /* pt-BR */,
+				BB9320312DEBFDB600DE5818 /* el */,
 			);
 			name = Feed.strings;
 			sourceTree = "<group>";
