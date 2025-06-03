@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rDo-Is-GqU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rDo-Is-GqU">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,10 +15,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" id="FMb-Z8-MkF">
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="FMb-Z8-MkF" customClass="ErrorView" customModule="SKEssentialFeediOS" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="393" height="16"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <subviews>
+                                <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jaA-au-hI8">
+                                    <rect key="frame" x="8" y="8" width="377" height="0.0"/>
+                                    <gestureRecognizers/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                    <connections>
+                                        <outletCollection property="gestureRecognizers" destination="Vpq-1x-tra" appends="YES" id="7X0-Cu-2DL"/>
+                                    </connections>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemPinkColor"/>
+                            <constraints>
+                                <constraint firstItem="jaA-au-hI8" firstAttribute="top" secondItem="FMb-Z8-MkF" secondAttribute="top" constant="8" id="9yc-dV-u1r"/>
+                                <constraint firstAttribute="trailing" secondItem="jaA-au-hI8" secondAttribute="trailing" constant="8" id="E1K-Tb-k8B"/>
+                                <constraint firstItem="jaA-au-hI8" firstAttribute="leading" secondItem="FMb-Z8-MkF" secondAttribute="leading" constant="8" id="M98-kD-C6r"/>
+                                <constraint firstAttribute="bottom" secondItem="jaA-au-hI8" secondAttribute="bottom" constant="8" id="Nah-n3-bdS"/>
+                            </constraints>
+                            <connections>
+                                <outlet property="label" destination="jaA-au-hI8" id="4xY-Ts-s2e"/>
+                            </connections>
                         </view>
                         <view key="tableFooterView" contentMode="scaleToFill" id="HjF-iK-o18">
                             <rect key="frame" x="0.0" y="676" width="393" height="16"/>
@@ -150,8 +171,16 @@ Description, Description, Description, Description</string>
                             <action selector="refresh" destination="rDo-Is-GqU" eventType="valueChanged" id="ayI-MY-5VW"/>
                         </connections>
                     </refreshControl>
+                    <connections>
+                        <outlet property="errorView" destination="FMb-Z8-MkF" id="eET-i7-68N"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0ah-4P-ivN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Vpq-1x-tra">
+                    <connections>
+                        <action selector="hideMessageAnimated" destination="FMb-Z8-MkF" id="j5Y-V0-w6C"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="698.47328244274809" y="-341.54929577464793"/>
         </scene>
@@ -160,6 +189,9 @@ Description, Description, Description, Description</string>
         <image name="pin" width="10" height="14.333333015441895"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
