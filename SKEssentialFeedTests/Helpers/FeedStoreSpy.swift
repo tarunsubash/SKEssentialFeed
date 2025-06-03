@@ -16,7 +16,7 @@ class FeedStoreSpy: FeedStore {
         case retrieve
     }
     
-    private (set) var recievedMessages = [RecievedMessage]()
+    private(set) var recievedMessages = [RecievedMessage]()
     
     private var deletionCompletions = [DeletionCompletion]()
     private var insertionCompletions = [InsertionCompletion]()
