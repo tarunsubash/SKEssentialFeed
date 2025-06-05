@@ -11,10 +11,6 @@ protocol FeedView {
     func display(_ viewModel: FeedViewModel)
 }
 
-protocol FeedLoadingView {
-    func display(_ viewModel: FeedLoadingViewModel)
-}
-
 protocol FeedErrorView {
     func display(_ viewModel: FeedErrorViewModel)
 }
