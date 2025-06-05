@@ -51,6 +51,15 @@ final class FeedImagePresenter<View: FeedImageView, Image> where View.Image == I
             isLoading: false,
             shouldRetry: image == nil))
     }
+    
+    func didFinishLoadingImageData(with error: Error, for model: FeedImage) {
+        view.display(FeedImageViewModel(
+            description: model.description,
+            location: model.location,
+            image: nil,
+            isLoading: false,
+            shouldRetry: true))
+    }
 }
 
 final class FeedImagePresenterTests: XCTestCase {
@@ -93,21 +102,36 @@ final class FeedImagePresenterTests: XCTestCase {
     }
     
     func test_didFinishLoadingImageData_displaysImageOnSuccessfulTransformation() {
-            let image = uniqueItem()
-            let data = Data()
-            let transformedData = AnyImage()
-            let (sut, view) = makeSUT(imageTransformer: { _ in transformedData })
-
-            sut.didFinishLoadingImageData(with: data, for: image)
-
-            let message = view.messages.first
-            XCTAssertEqual(view.messages.count, 1)
-            XCTAssertEqual(message?.description, image.description)
-            XCTAssertEqual(message?.location, image.location)
-            XCTAssertEqual(message?.isLoading, false)
-            XCTAssertEqual(message?.shouldRetry, false)
-            XCTAssertEqual(message?.image, transformedData)
-        }
+        let image = uniqueItem()
+        let data = Data()
+        let transformedData = AnyImage()
+        let (sut, view) = makeSUT(imageTransformer: { _ in transformedData })
+        
+        sut.didFinishLoadingImageData(with: data, for: image)
+        
+        let message = view.messages.first
+        XCTAssertEqual(view.messages.count, 1)
+        XCTAssertEqual(message?.description, image.description)
+        XCTAssertEqual(message?.location, image.location)
+        XCTAssertEqual(message?.isLoading, false)
+        XCTAssertEqual(message?.shouldRetry, false)
+        XCTAssertEqual(message?.image, transformedData)
+    }
+    
+    func test_didFinishLoadingImageDataWithError_displaysRetry() {
+        let image = uniqueItem()
+        let (sut, view) = makeSUT()
+        
+        sut.didFinishLoadingImageData(with: anyError(), for: image)
+        
+        let message = view.messages.first
+        XCTAssertEqual(view.messages.count, 1)
+        XCTAssertEqual(message?.description, image.description)
+        XCTAssertEqual(message?.location, image.location)
+        XCTAssertEqual(message?.isLoading, false)
+        XCTAssertEqual(message?.shouldRetry, true)
+        XCTAssertNil(message?.image)
+    }
     
     // MARK: - Helpers
     
