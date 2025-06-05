@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import SKEssentialFeediOS
+import SKEssentialFeed
 
 final class FeedLocalizationTests: XCTestCase {
 

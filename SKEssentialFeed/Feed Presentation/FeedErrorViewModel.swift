@@ -2,12 +2,12 @@
 //  FeedErrorViewModel.swift
 //  SKEssentialFeed
 //
-//  Created by Subash on 03/06/25.
+//  Created by Subash on 05/06/25.
 //
 
 
-struct FeedErrorViewModel {
-    let message: String?
+public struct FeedErrorViewModel {
+    public let message: String?
     
     static var noError: FeedErrorViewModel {
         return FeedErrorViewModel(message: .none)

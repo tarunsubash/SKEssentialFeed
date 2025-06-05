@@ -6,8 +6,7 @@
 //
 
 import UIKit
-
-import UIKit
+import SKEssentialFeed
 
 protocol FeedImageCellControllerDelegate {
     func didRequestImage()
